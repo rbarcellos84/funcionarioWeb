@@ -1,0 +1,88 @@
+<div class="card">
+    <div class="container col-md-12">
+        <h4>Alteração de funcionario</h4>
+        <p>Tela para modificação do funcionarios cadastrados na empresa.</p>
+        <hr>
+    </div>
+
+    <form [formGroup]="fromEdicao" (ngSubmit)="onSubmit()">
+        <input type="hidden" formControlName="idfuncionario">
+        <div class="container md-3">
+            <div class="card-boby">
+                <div class="row mb-3">
+                    <div class="col-md-8">
+                        <label>Nome do funcionario:</label>
+                        <input type="text" class="form-control" placeholder="Nome" formControlName="nome">
+                        <div *ngIf="form.nome.touched && form.nome.invalid" class="text-danger">
+                            <span *ngIf="form.nome.errors.required">
+                                Por favor, informe o nome do funcionário.
+                            </span>
+                            <span *ngIf="form.nome.errors.minlength">
+                                Por favor, informe no mínimo 6 caracteres.
+                            </span>
+                            <span *ngIf="form.nome.errors.maxlength">
+                                Por favor, informe no máximo 200 caracteres.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label>CPF do funcionario:</label>
+                        <input type="text" class="form-control" placeholder="CPF" formControlName="cpf">
+                        <div *ngIf="form.cpf.touched && form.cpf.invalid" class="text-danger">
+                            <span *ngIf="form.cpf.errors.required">
+                                Por favor, informe o CPF do funcionário.
+                            </span>
+                            <span *ngIf="form.cpf.errors.minlength || form.cpf.errors.maxlength">
+                                Por favor, o CPF é composto de 11 caracteres numéricos.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label>Matricula do funcionario:</label>
+                        <input type="text" class="form-control" placeholder="Matricula" formControlName="matricula">
+                        <div *ngIf="form.matricula.touched && form.matricula.invalid" class="text-danger">
+                            <span *ngIf="form.matricula.errors.required">
+                                Por favor, informe a matricula do funcionário.
+                            </span>
+                            <span *ngIf="form.matricula.errors.minlength">
+                                Por favor, informe no mínimo 4 caracteres.
+                            </span>
+                            <span *ngIf="form.matricula.errors.maxlength">
+                                Por favor, informe no máximo 10 caracteres.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Data de admissão:</label>
+                        <input type="date" class="form-control" placeholder="Data" formControlName="dataAdmissao">
+                        <div *ngIf="form.dataAdmissao.touched && form.dataAdmissao.invalid" class="text-danger">
+                            <span *ngIf="form.dataAdmissao.errors.required">
+                                Por favor, informe a data de admissão.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row mb-3">
+                    <div class="col-md-2">
+                        <div class="mb-3 d-grid">
+                            <button class="btn btn-sm btn-success"
+                            [disabled]="!fromEdicao.valid">
+                                Atualizar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="mb-3 d-grid">
+                            <button class="btn btn-sm btn-success" [routerLink]="['/consulta-funcionario']">
+                                Voltar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
